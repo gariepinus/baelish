@@ -32,6 +32,10 @@ class Amount:
         self._goldDragons = Coin("Gold Dragons", "GD", value)
 
     @property
+    def in_gd(self):
+        return Coin("Gold Dragons", "GD", self.in_ss / 210)
+
+    @property
     def ss(self):
         return self._silverStags
 
@@ -40,12 +44,21 @@ class Amount:
         self._silverStags = Coin("Silver Stags", "SS", value)
 
     @property
+    def in_ss(self):
+        return Coin("Silver Stags", "SS", self.in_cp / 56)
+
+    @property
     def cp(self):
         return self._copperPennies
 
     @cp.setter
-    def gd(self, value):
+    def cp(self, value):
         self._copperPennies = Coin("Copper Pennies", "CP", value)
+
+    @property
+    def in_cp(self):
+        value = (((self._goldDragons * 210) + self._silverStags) * 56) + self._copperPennies
+        return Coin("Copper Pennies", "CP", value)
 
 
 class Coin(float):

@@ -9,17 +9,17 @@ class Amount:
     def __repr__(self):
         return "<Amount: {}, {}, {}>".format(self._goldDragons, self._silverStags, self._copperPennies)
 
-    def __str__(self, useLongUnits=False, format_specifier=".2g"):
+    def __str__(self, useLongUnits=False, maxDecimals=2):
         output=[]
 
         if self._goldDragons != 0:
-            output.append(self._goldDragons.__str__(useLongUnits, format_specifier))
+            output.append(self._goldDragons.__str__(useLongUnits, maxDecimals))
 
         if self._silverStags != 0:
-            output.append(self._silverStags.__str__(useLongUnits, format_specifier))
+            output.append(self._silverStags.__str__(useLongUnits, maxDecimals))
 
         if self._copperPennies != 0 or (self._goldDragons == 0 and self._silverStags == 0):
-            output.append(self._copperPennies.__str__(useLongUnits, format_specifier))
+            output.append(self._copperPennies.__str__(useLongUnits, maxDecimals))
 
         return ", ".join(output)
 
@@ -56,5 +56,5 @@ class Coin(float):
         self._longUnit = longUnit
         self._shortUnit = shortUnit
 
-    def __str__(self, useLongUnit=False, formatSpecifier=".2g"):
-        return "{:{formatSpecifier}} {}".format(self, self._longUnit if useLongUnit else self._shortUnit, formatSpecifier=formatSpecifier)
+    def __str__(self, useLongUnit=False, maxDecimals=2):
+        return "{} {}".format(round(self, maxDecimals), self._longUnit if useLongUnit else self._shortUnit)

@@ -23,6 +23,30 @@ class Amount:
 
         return ", ".join(output)
 
+    @property
+    def gd(self):
+        return self._goldDragons
+
+    @gd.setter
+    def gd(self, value):
+        self._goldDragons = Coin("Gold Dragons", "GD", value)
+
+    @property
+    def ss(self):
+        return self._silverStags
+
+    @ss.setter
+    def ss(self, value):
+        self._silverStags = Coin("Silver Stags", "SS", value)
+
+    @property
+    def cp(self):
+        return self._copperPennies
+
+    @cp.setter
+    def gd(self, value):
+        self._copperPennies = Coin("Copper Pennies", "CP", value)
+
 
 class Coin(float):
     def __new__(self, longUnit, shortUnit, quantity=0):

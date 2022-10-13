@@ -23,6 +23,12 @@ class Amount:
 
         return ", ".join(output)
 
+    def __int__(self):
+        return int(self.in_cp)
+
+    def __float__(self):
+        return float(self.in_cp)
+    
     @property
     def gd(self):
         return self._goldDragons

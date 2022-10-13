@@ -9,7 +9,7 @@ class Amount:
     def __repr__(self):
         return "<Amount: {}, {}, {}>".format(self._goldDragons, self._silverStags, self._copperPennies)
 
-    def __str__(self, useLongUnits=False, format_specifier=".2g"):
+    def __str__(self, useLongUnits=False, format_specifier=".2f"):
         output=[]
 
         if self._goldDragons != 0:
@@ -69,5 +69,5 @@ class Coin(float):
         self._longUnit = longUnit
         self._shortUnit = shortUnit
 
-    def __str__(self, useLongUnit=False, formatSpecifier=".2g"):
+    def __str__(self, useLongUnit=False, formatSpecifier=".2f"):
         return "{:{formatSpecifier}} {}".format(self, self._longUnit if useLongUnit else self._shortUnit, formatSpecifier=formatSpecifier)

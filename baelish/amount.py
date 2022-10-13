@@ -28,7 +28,25 @@ class Amount:
 
     def __float__(self):
         return float(self.in_cp)
-    
+
+    def __lt__(self, other):
+        return float(self) < float(other)
+
+    def __le__(self, other):
+        return float(self) <= float(other)
+
+    def __eq__(self, other):
+        return float(self) == float(other)
+
+    def __ne__(self, other):
+        return float(self) != float(other)
+
+    def __gt__(self, other):
+        return float(self) > float(other)
+
+    def __ge__(self, other):
+        return float(self) >= float(other)
+
     @property
     def gd(self):
         return self._goldDragons

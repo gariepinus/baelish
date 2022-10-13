@@ -84,6 +84,29 @@ class Amount:
         value = (((self._goldDragons * 210) + self._silverStags) * 56) + self._copperPennies
         return Coin("Copper Pennies", "CP", value)
 
+    @property
+    def minimized(self):
+        original = self.in_cp
+
+        if self < 0:
+            original = original * -1
+        
+        diff = original % (210 * 56)
+        goldDragons = (original - diff) / (210 * 56)
+
+        original = diff
+        diff = original % 56
+        
+        silverStags = (original - diff) / 56
+        copperPennies = diff
+
+        if self < 0:
+            goldDragons = goldDragons * -1
+            silverStags = silverStags * -1
+            copperPennies = copperPennies * -1
+
+        return Amount(goldDragons, silverStags, copperPennies)
+
 
 class Coin(float):
     def __new__(self, longUnit, shortUnit, quantity=0):

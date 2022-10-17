@@ -8,7 +8,7 @@ class Quantity(float):
         self._unit = unit
         self._abbrev = abbrev
 
-    def __str__(self, use_abbrev=True, format_specifier=".2f"):
+    def __str__(self, use_abbrev=True, format_specifier=".0f"):
         return "{:{format_specifier}} {}".format(self,
                 self._abbrev if use_abbrev else self._unit,
                 format_specifier=format_specifier)

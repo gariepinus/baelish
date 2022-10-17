@@ -45,3 +45,15 @@ def test_getset_cp():
     amt.cp = 3.14159265359
     assert amt.cp == 3.14159265359
     assert amt.cp.__str__(use_abbrev=False, format_specifier=".3f") == "3.142 Copper Pennies"
+
+def test_convert_gd():
+    amt = baelish.currency.amount.Amount(0, 104, 56)
+    assert amt.in_gd == 0.5
+
+def test_convert_ss():
+    amt = baelish.currency.amount.Amount(2, 30, -14)
+    assert amt.in_ss == 449.75
+
+def test_convert_cp():
+    amt = baelish.currency.amount.Amount(0, 1, 80)
+    assert amt.in_cp == 136

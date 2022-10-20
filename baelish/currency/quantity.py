@@ -1,14 +1,14 @@
-class Quantity(float):
-    """Float with a unit."""
+"""Represent a number of coins as an integer."""
 
-    def __new__(self, num, unit, abbrev):
-        return super().__new__(self, num)
+class Quantity(int):
+    """Integer with unit information."""
 
-    def __init__(self, num, unit, abbrev):
-        self._unit = unit
-        self._abbrev = abbrev
+    def __new__(cls, num, unit):
+        obj = int.__new__(cls, num)
+        obj._unit = unit
+        return obj
+        #cls._unit = unit
+        #return super(Quantity, cls).__new__(cls, num)
 
-    def __str__(self, use_abbrev=True, format_specifier=".0f"):
-        return "{:{format_specifier}} {}".format(self,
-                self._abbrev if use_abbrev else self._unit,
-                format_specifier=format_specifier)
+    def __str__(self):
+        return f"{int(self)} {self._unit}"

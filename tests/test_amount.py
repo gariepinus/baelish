@@ -1,59 +1,45 @@
-import baelish.currency.amount
+"""Tests for Amount class."""
+import baelish.currency
 
-def test_str_empty():
-    amt = baelish.currency.amount.Amount()
-    assert "{}".format(amt) == "0 CP"
-
-def test_str_gd():
-    amt = baelish.currency.amount.Amount(1, 0, 0)
-    assert amt.__str__(use_abbrev=False, format_specifier=".2f") == "1.00 Gold Dragons"
-
-def test_str_ss():
-    amt = baelish.currency.amount.Amount(0, 20, 0)
-    assert "{}".format(amt) == "20 SS"
-
-def test_str_cp():
-    amt = baelish.currency.amount.Amount(0, 0, -33.666)
-    assert "{}".format(amt) == "-34 CP"
-
-def test_str_gdss():
-    amt = baelish.currency.amount.Amount(5, 100, 0)
-    assert "{}".format(amt) == "5 GD, 100 SS"
-
-def test_str_gdcp():
-    amt = baelish.currency.amount.Amount(1, 0, 20)
-    assert "{}".format(amt) == "1 GD, 20 CP"
-
-def test_str_sscp():
-    amt = baelish.currency.amount.Amount(0, 50, 1)
-    assert "{}".format(amt) == "50 SS, 1 CP"
+def test_str():
+    """Assert the str method works as intendet."""
+    amt = baelish.currency.Amount()
+    assert f"{amt}" == "0 CP"
+    amt = baelish.currency.Amount(1, 0, 0)
+    assert f"{amt}" == "1 GD"
+    amt = baelish.currency.Amount(0, 20, 0)
+    assert f"{amt}" == "20 SS"
+    amt = baelish.currency.Amount(0, 0, -33)
+    assert f"{amt}" == "-33 CP"
+    amt = baelish.currency.Amount(5, 100, 0)
+    assert f"{amt}" == "5 GD, 100 SS"
+    amt = baelish.currency.Amount(1, 0, 20)
+    assert f"{amt}" == "1 GD, 20 CP"
+    amt = baelish.currency.Amount(0, 50, 1)
+    assert f"{amt}" == "50 SS, 1 CP"
 
 def test_getset_gd():
-    amt = baelish.currency.amount.Amount()
-    amt.gd = -1000
-    assert amt.gd == -1000
-    assert "{}".format(amt.gd) == "-1000 GD"
+    """Assert getter and setter for property gold_dragons work as intendet."""
+    amt = baelish.currency.Amount()
+    amt.gold_dragons = -1000
+    assert amt.gold_dragons == -1000
+    assert f"{amt.gold_dragons}" == "-1000 GD"
 
 def test_getset_ss():
-    amt = baelish.currency.amount.Amount()
-    amt.ss = 666
-    assert amt.ss == 666
-    assert "{}".format(amt.ss) == "666 SS"
+    """Assert getter and setter for property silver_stags work as intendet."""
+    amt = baelish.currency.Amount()
+    amt.silver_stags = 666
+    assert amt.silver_stags == 666
+    assert f"{amt.silver_stags}" == "666 SS"
 
 def test_getset_cp():
-    amt = baelish.currency.amount.Amount()
-    amt.cp = 3.14159265359
-    assert amt.cp == 3.14159265359
-    assert amt.cp.__str__(use_abbrev=False, format_specifier=".3f") == "3.142 Copper Pennies"
-
-def test_convert_gd():
-    amt = baelish.currency.amount.Amount(0, 104, 56)
-    assert amt.in_gd == 0.5
-
-def test_convert_ss():
-    amt = baelish.currency.amount.Amount(2, 30, -14)
-    assert amt.in_ss == 449.75
+    """Assert getter and setter for property copper_pennies work as intendet."""
+    amt = baelish.currency.Amount()
+    amt.copper_pennies = 3.14159265359
+    assert amt.copper_pennies == 3
+    assert f"{amt.copper_pennies}" == "3 CP"
 
 def test_convert_cp():
-    amt = baelish.currency.amount.Amount(0, 1, 80)
+    """Assert that conversion of whole amount in cp works as intendet."""
+    amt = baelish.currency.Amount(0, 1, 80)
     assert amt.in_cp == 136

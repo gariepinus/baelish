@@ -7,8 +7,6 @@ class Quantity(int):
         obj = int.__new__(cls, num)
         obj._unit = unit
         return obj
-        #cls._unit = unit
-        #return super(Quantity, cls).__new__(cls, num)
 
     def __str__(self):
         return f"{int(self)} {self._unit}"

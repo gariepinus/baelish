@@ -16,7 +16,6 @@ class Amount:
         if self == 0:
             return "0 CP"
         output=[self._gold_dragons, self._silver_stags, self._copper_pennies]
-        print(list(map(str, filter(None, output))))
         return ", ".join(list(map(str, filter(None, output))))
 
     def __int__(self):

@@ -72,7 +72,8 @@ class Amount:
     @property
     def in_cp(self):
         """Whole amount in just copper pennies."""
-        value = (((self._gold_dragons.num * 210) + self._silver_stags.num) * 56) + self._copper_pennies.num
+        value = (
+            self._gold_dragons.num * 210 + self._silver_stags.num * 56 + self._copper_pennies.num)
         return Quantity(value, "CP")
 
     @property

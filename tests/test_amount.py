@@ -23,7 +23,7 @@ def test_getset_gd():
     amt = baelish.currency.Amount()
     amt.gold_dragons = -1000
     assert amt.gold_dragons == -1000
-    assert f"{amt.gold_dragons}" == "-1000 GD"
+    assert f"{amt.gold_dragons}" == "-1,000 GD"
 
 def test_getset_ss():
     """Assert getter and setter for property silver_stags work as intendet."""

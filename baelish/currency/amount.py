@@ -16,13 +16,13 @@ class Amount:
         if self == 0:
             return "0 CP"
         output=[self._gold_dragons, self._silver_stags, self._copper_pennies]
-        return ", ".join(list(map(str, filter(None, output))))
+        return ", ".join(list(map(str, filter(lambda x: int(x) != 0, output))))
 
     def __int__(self):
         return int(self.in_cp)
 
     def __float__(self):
-        return float(self.in_cp)
+        return float(self.in_cp.num)
 
     def __lt__(self, other):
         return float(self) < float(other)
@@ -49,7 +49,7 @@ class Amount:
 
     @gold_dragons.setter
     def gold_dragons(self, value):
-        self._gold_dragons = Quantity(value, "GD")
+        self._gold_dragons.num = value
 
     @property
     def silver_stags(self):
@@ -58,7 +58,7 @@ class Amount:
 
     @silver_stags.setter
     def silver_stags(self, value):
-        self._silver_stags = Quantity(value, "SS")
+        self._silver_stags.num = value
 
     @property
     def copper_pennies(self):
@@ -67,18 +67,18 @@ class Amount:
 
     @copper_pennies.setter
     def copper_pennies(self, value):
-        self._copper_pennies = Quantity(value, "CP")
+        self._copper_pennies.num = value
 
     @property
     def in_cp(self):
         """Whole amount in just copper pennies."""
-        value = (((self._gold_dragons * 210) + self._silver_stags) * 56) + self._copper_pennies
+        value = (((self._gold_dragons.num * 210) + self._silver_stags.num) * 56) + self._copper_pennies.num
         return Quantity(value, "CP")
 
     @property
     def minimized(self):
         """Amount converted in least possible number of coins."""
-        original = self.in_cp
+        original = int(self.in_cp)
 
         if self < 0:
             original = original * -1

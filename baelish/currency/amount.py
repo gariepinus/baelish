@@ -22,7 +22,7 @@ class Amount:
         return int(self.in_cp)
 
     def __float__(self):
-        return float(self.in_cp.num)
+        return float(self.in_cp)
 
     def __lt__(self, other):
         return float(self) < float(other)
@@ -49,7 +49,7 @@ class Amount:
 
     @gold_dragons.setter
     def gold_dragons(self, value):
-        self._gold_dragons.num = value
+        self._gold_dragons.number = value
 
     @property
     def silver_stags(self):
@@ -58,7 +58,7 @@ class Amount:
 
     @silver_stags.setter
     def silver_stags(self, value):
-        self._silver_stags.num = value
+        self._silver_stags.number = value
 
     @property
     def copper_pennies(self):
@@ -67,13 +67,14 @@ class Amount:
 
     @copper_pennies.setter
     def copper_pennies(self, value):
-        self._copper_pennies.num = value
+        self._copper_pennies.number = value
 
     @property
     def in_cp(self):
         """Whole amount in just copper pennies."""
-        value = (
-            self._gold_dragons.num * 210 + self._silver_stags.num * 56 + self._copper_pennies.num)
+        value = (int(self._gold_dragons) * 210
+                + int(self._silver_stags) * 56
+                + int(self._copper_pennies))
         return Quantity(value, "CP")
 
     @property

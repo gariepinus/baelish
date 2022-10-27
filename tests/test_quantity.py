@@ -27,6 +27,6 @@ def test_conversion():
 def test_num():
     """Assert getter and setter for num property work as intended."""
     qty = baelish.currency.Quantity(0, "CP")
-    assert qty.num == 0
-    qty.num = 6
-    assert qty.num == 6
+    assert qty.number == 0
+    qty.number = 6
+    assert qty.number == 6

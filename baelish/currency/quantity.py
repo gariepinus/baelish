@@ -16,6 +16,9 @@ class Quantity():
         self._num = int(num)
         self._unit = str(unit)
 
+    def __repr__(self):
+        return f"<{self._num} {self._unit}>"
+
     def __str__(self):
         return f"{self._num:,} {self._unit}"
 

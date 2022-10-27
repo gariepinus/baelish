@@ -43,3 +43,5 @@ def test_convert_cp():
     """Assert that conversion of whole amount in cp works as intendet."""
     amt = baelish.currency.Amount(0, 1, 80)
     assert int(amt.in_cp) == 136
+    amt = baelish.currency.Amount(1, 0, 0)
+    assert int(amt.in_cp) == 11760

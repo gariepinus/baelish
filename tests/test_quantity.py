@@ -6,9 +6,13 @@ import baelish.currency
 def test_exceptions():
     """Assert Quantity raises TypeErrors when non-ints get passed to num."""
     with pytest.raises(TypeError):
-        assert baelish.currency.Quantity(8.7, "GD")
-        assert baelish.currency.Quantity(-8.7, "SS")
-        assert baelish.currency.Quantity(0.0, "CP")
+        baelish.currency.Quantity(8.7, "GD")
+    with pytest.raises(TypeError):
+        baelish.currency.Quantity(-8.7, "SS")
+    with pytest.raises(TypeError):
+        baelish.currency.Quantity(0.0, "CP")
+    with pytest.raises(TypeError):
+        baelish.currency.Quantity(0, 0)
 
 
 def test_conversion():

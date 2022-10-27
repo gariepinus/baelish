@@ -5,17 +5,17 @@ from .quantity import Quantity
 class Amount:
     """Three Quiantities of coins."""
     def __init__(self, gold_dragons=0, silver_stags=0, copper_pennies=0):
-        self._gold_dragons = Quantity(gold_dragons, "GD")
-        self._silver_stags = Quantity(silver_stags, "SS")
-        self._copper_pennies = Quantity(copper_pennies, "CP")
+        self.__gold_dragons = Quantity(gold_dragons, "GD")
+        self.__silver_stags = Quantity(silver_stags, "SS")
+        self.__copper_pennies = Quantity(copper_pennies, "CP")
 
     def __repr__(self):
-        return f"<Amount: {self._gold_dragons}, {self._silver_stags}, {self._copper_pennies}>"
+        return f"<Amount: {self.__gold_dragons}, {self.__silver_stags}, {self.__copper_pennies}>"
 
     def __str__(self):
         if self == 0:
             return "0 CP"
-        output=[self._gold_dragons, self._silver_stags, self._copper_pennies]
+        output=[self.__gold_dragons, self.__silver_stags, self.__copper_pennies]
         return ", ".join(list(map(str, filter(lambda x: int(x) != 0, output))))
 
     def __int__(self):
@@ -45,36 +45,36 @@ class Amount:
     @property
     def gold_dragons(self):
         """Gold Dragons."""
-        return self._gold_dragons
+        return self.__gold_dragons
 
     @gold_dragons.setter
     def gold_dragons(self, value):
-        self._gold_dragons.number = value
+        self.__gold_dragons.number = value
 
     @property
     def silver_stags(self):
         """Silver Stags."""
-        return self._silver_stags
+        return self.__silver_stags
 
     @silver_stags.setter
     def silver_stags(self, value):
-        self._silver_stags.number = value
+        self.__silver_stags.number = value
 
     @property
     def copper_pennies(self):
         """Copper Pennies."""
-        return self._copper_pennies
+        return self.__copper_pennies
 
     @copper_pennies.setter
     def copper_pennies(self, value):
-        self._copper_pennies.number = value
+        self.__copper_pennies.number = value
 
     @property
     def in_cp(self):
         """Whole amount in just copper pennies."""
-        value = (int(self._gold_dragons) * (210 * 56)
-                + int(self._silver_stags) * 56
-                + int(self._copper_pennies))
+        value = (int(self.__gold_dragons) * (210 * 56)
+                + int(self.__silver_stags) * 56
+                + int(self.__copper_pennies))
         return Quantity(value, "CP")
 
     @property

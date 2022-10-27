@@ -30,9 +30,6 @@ class Quantity():
     def __float__(self):
         return float(self._num)
 
-    def __eq__(self, other):
-        return self._num == other
-
     @property
     def num(self):
         """Number of coins."""

@@ -22,6 +22,9 @@ class Quantity():
     def __int__(self):
         return self._num
 
+    def __float__(self):
+        return float(self._num)
+
     def __eq__(self, other):
         return self._num == other
 

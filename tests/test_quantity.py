@@ -10,6 +10,9 @@ def test_conversion():
     assert int(baelish.currency.Quantity(666, "SS")) == 666
     assert int(baelish.currency.Quantity(-5000, "CP")) == -5000
 
+    assert float(baelish.currency.Quantity(0, "GD")) == 0.0
+    assert float(baelish.currency.Quantity(99.55, "CP")) == 99.0
+
 
 def test_num():
     """Assert getter and setter for num property work as intended."""

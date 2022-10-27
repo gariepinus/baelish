@@ -35,7 +35,7 @@ def test_getset_ss():
 def test_getset_cp():
     """Assert getter and setter for property copper_pennies work as intendet."""
     amt = baelish.currency.Amount()
-    amt.copper_pennies = 3.14159265359
+    amt.copper_pennies = 3
     assert amt.copper_pennies == 3
     assert f"{amt.copper_pennies}" == "3 CP"
 

@@ -13,6 +13,8 @@ class Quantity():
     """
 
     def __init__(self, num, unit):
+        if not isinstance(num, int):
+            raise TypeError("num must be int.")
         self._num = int(num)
         self._unit = str(unit)
 
@@ -38,4 +40,6 @@ class Quantity():
 
     @num.setter
     def num(self, value):
+        if not isinstance(value, int):
+            raise TypeError("num must be int.")
         self._num = int(value)

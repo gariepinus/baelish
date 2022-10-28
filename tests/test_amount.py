@@ -60,3 +60,5 @@ def test_convert_cp():
     assert int(amt.in_cp) == 136
     amt = baelish.currency.Amount(1, 0, 0)
     assert int(amt.in_cp) == 11760
+    amt = baelish.currency.Amount(0, -1, 56)
+    assert int(amt.in_cp) == 0

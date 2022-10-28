@@ -47,7 +47,7 @@ class Quantity():
     def number(self, value):
         if not isinstance(value, int):
             raise TypeError("number must be integer")
-        self.__number = int(value)
+        self.__number = value
 
 
     @property

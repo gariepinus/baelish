@@ -34,3 +34,5 @@ def test_num():
     assert qty.number == 0
     qty.number = 6
     assert qty.number == 6
+    with pytest.raises(TypeError):
+        qty.number = -0.1

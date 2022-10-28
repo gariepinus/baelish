@@ -7,6 +7,9 @@ def test_exceptions():
     """Assert Quantity raises TypeErrors when non-ints get passed to num."""
     with pytest.raises(TypeError):
         baelish.currency.Amount(silver_stags=0.5)
+    amt = baelish.currency.Amount()
+    with pytest.raises(TypeError):
+        amt.gold_dragons = 7.4
 
 
 def test_str():

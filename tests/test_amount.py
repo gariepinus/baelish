@@ -105,3 +105,9 @@ def test_comparsion():
     assert not amt_a > 56
     assert 800 > amt_a
     assert amt_b > amt_a
+
+    # __ge__
+    assert amt_a >= 56
+    assert amt_b >= 9
+    assert not 5 >= amt_a
+    assert not amt_a >= amt_b

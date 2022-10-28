@@ -50,7 +50,7 @@ class Amount:
 
 
     def __ge__(self, other):
-        return float(self) >= float(other)
+        return int(self) >= other
 
 
     @property

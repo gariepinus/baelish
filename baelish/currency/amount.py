@@ -46,7 +46,7 @@ class Amount:
 
 
     def __gt__(self, other):
-        return float(self) > float(other)
+        return int(self) > other
 
 
     def __ge__(self, other):

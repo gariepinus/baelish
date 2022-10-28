@@ -98,3 +98,10 @@ def test_comparsion():
     assert amt_b != -3.33
     assert not 56 != amt_a
     assert amt_a != amt_b
+
+    # __gt__
+    assert amt_a > -7.999
+    assert amt_b > 999
+    assert not amt_a > 56
+    assert 800 > amt_a
+    assert amt_b > amt_a

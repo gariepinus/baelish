@@ -68,22 +68,33 @@ def test_comparsion():
     """Assert that compartion methods work as intended."""
     amt_a = baelish.currency.Amount(silver_stags=1)
     amt_b = baelish.currency.Amount(gold_dragons=1)
+
+    # __lt__
     assert amt_a < 57
     assert not amt_a < 56
+    assert 3.141 < amt_a
     assert amt_b < 12000
+    assert not 42000 < amt_b
     assert not amt_b < -0.5
     assert amt_a < amt_b
     assert not amt_b < amt_a
 
+    # __le__
     assert amt_a <= 57
     assert amt_a <= 56
     assert not amt_a <= 3
+    assert not 11760.1 <= amt_b
     assert amt_a <= amt_b
 
+    # __eq__
     assert amt_a == 56
+    assert 56 == amt_a
     assert amt_b == 11760
+    assert not [1, 2, 3] == amt_b
     assert not amt_a == amt_b
 
+    # __ne__
     assert amt_a != "Foo"
     assert amt_b != -3.33
+    assert not 56 != amt_a
     assert amt_a != amt_b

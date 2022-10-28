@@ -53,6 +53,18 @@ class Amount:
         return int(self) >= other
 
 
+    def __add__(self, other):
+        if isinstance(other, type(self)):
+            return Amount(int(self.gold_dragons) + int(other.gold_dragons),
+                    int(self.silver_stags) + int(other.silver_stags),
+                    int(self.copper_pennies) + int(other.copper_pennies))
+        return Amount(copper_pennies=int(self) + int(other))
+
+
+    def __radd__(self, other):
+        return other.__add__(int(self))
+
+
     @property
     def gold_dragons(self):
         """Gold Dragons."""

@@ -111,3 +111,18 @@ def test_comparsion():
     assert amt_b >= 9
     assert not 5 >= amt_a
     assert not amt_a >= amt_b
+
+
+def test_addition():
+    """Assert that additions with Amounts work as intendet."""
+    assert baelish.currency.Amount(copper_pennies=1) + 7 == 8
+    assert baelish.currency.Amount(silver_stags=1) + 1 == 57
+    assert baelish.currency.Amount(silver_stags=-1) + 56 == 0
+
+    assert 0 + baelish.currency.Amount(0, 0, 100) == 100
+    assert 4.4444 + baelish.currency.Amount(1, 0, 0) == 11764.4444
+
+    assert baelish.currency.Amount(1, 0, 0) + 89 == baelish.currency.Amount(1, 0, 89)
+    assert (baelish.currency.Amount(0, 1000, 500)
+            + baelish.currency.Amount(1, 6, 9)
+            == baelish.currency.Amount(1, 1006, 509))

@@ -38,7 +38,7 @@ class Amount:
 
 
     def __eq__(self, other):
-        return float(self) == float(other)
+        return int(self) == other
 
 
     def __ne__(self, other):

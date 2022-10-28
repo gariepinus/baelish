@@ -34,7 +34,7 @@ class Amount:
 
 
     def __le__(self, other):
-        return float(self) <= float(other)
+        return int(self) <= other
 
 
     def __eq__(self, other):

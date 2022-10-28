@@ -42,7 +42,7 @@ class Amount:
 
 
     def __ne__(self, other):
-        return float(self) != float(other)
+        return int(self) != other
 
 
     def __gt__(self, other):

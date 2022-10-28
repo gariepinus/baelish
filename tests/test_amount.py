@@ -83,3 +83,7 @@ def test_comparsion():
     assert amt_a == 56
     assert amt_b == 11760
     assert not amt_a == amt_b
+
+    assert amt_a != "Foo"
+    assert amt_b != -3.33
+    assert amt_a != amt_b

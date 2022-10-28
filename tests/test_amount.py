@@ -62,3 +62,15 @@ def test_convert_cp():
     assert int(amt.in_cp) == 11760
     amt = baelish.currency.Amount(0, -1, 56)
     assert int(amt.in_cp) == 0
+
+
+def test_comparsion():
+    """Assert that compartion methods work as intended."""
+    amt_a = baelish.currency.Amount(silver_stags=1)
+    amt_b = baelish.currency.Amount(gold_dragons=1)
+    assert amt_a < 57
+    assert not amt_a < 56
+    assert amt_b < 12000
+    assert not amt_b < -0.5
+    assert amt_a < amt_b
+    assert not amt_b < amt_a

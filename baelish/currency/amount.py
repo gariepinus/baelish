@@ -4,15 +4,10 @@ from .quantity import Quantity
 
 class Amount:
     """Three Quiantities of coins."""
-    __gold_dragons = Quantity(0, "GD")
-    __silver_stags = Quantity(0, "SS")
-    __copper_pennies = Quantity(0, "CP")
-
-
     def __init__(self, gold_dragons=0, silver_stags=0, copper_pennies=0):
-        self.gold_dragons = gold_dragons
-        self.silver_stags = silver_stags
-        self.copper_pennies = copper_pennies
+        self.__gold_dragons = Quantity(gold_dragons, "GD")
+        self.__silver_stags = Quantity(silver_stags, "SS")
+        self.__copper_pennies = Quantity(copper_pennies, "CP")
 
 
     def __repr__(self):
@@ -35,7 +30,7 @@ class Amount:
 
 
     def __lt__(self, other):
-        return float(self) < float(other)
+        return int(self) < other
 
 
     def __le__(self, other):

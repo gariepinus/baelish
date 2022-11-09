@@ -58,11 +58,21 @@ class Amount:
             return Amount(int(self.gold_dragons) + int(other.gold_dragons),
                     int(self.silver_stags) + int(other.silver_stags),
                     int(self.copper_pennies) + int(other.copper_pennies))
-        return Amount(copper_pennies=int(self) + int(other))
+        if isinstance(other, int):
+            return Amount(int(self.gold_dragons),
+                int(self.silver_stags),
+                int(self.copper_pennies) + other)
+        return NotImplemented
 
 
     def __radd__(self, other):
-        return other.__add__(int(self))
+        if isinstance(other, type(self)):
+            return other.__add__(self)
+        if isinstance(other, int):
+            return Amount(int(self.gold_dragons),
+                    int(self.silver_stags),
+                    other.__add__(int(self.copper_pennies)))
+        return NotImplemented
 
 
     @property

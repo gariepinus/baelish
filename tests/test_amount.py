@@ -116,13 +116,25 @@ def test_comparsion():
 def test_addition():
     """Assert that additions with Amounts work as intendet."""
     assert baelish.currency.Amount(copper_pennies=1) + 7 == 8
-    assert baelish.currency.Amount(silver_stags=1) + 1 == 57
     assert baelish.currency.Amount(silver_stags=-1) + 56 == 0
+    amt = baelish.currency.Amount(silver_stags=1) + 1
+    assert int(amt.silver_stags) == 1
+    assert int(amt.copper_pennies) == 1
+    assert isinstance(baelish.currency.Amount(1, 0, 0) + 1,
+            baelish.currency.Amount)
+    with pytest.raises(TypeError):
+        4.4444 + baelish.currency.Amount(1, 0, 0)
 
     assert 0 + baelish.currency.Amount(0, 0, 100) == 100
-    assert 4.4444 + baelish.currency.Amount(1, 0, 0) == 11764.4444
+    assert 4 + baelish.currency.Amount(1, 0, 0) == 11764
+    assert isinstance(1 + baelish.currency.Amount(1, 0, 0),
+            baelish.currency.Amount)
+    with pytest.raises(TypeError):
+        baelish.currency.Amount(1, 0, 0) + 4.4444
 
-    assert baelish.currency.Amount(1, 0, 0) + 89 == baelish.currency.Amount(1, 0, 89)
     assert (baelish.currency.Amount(0, 1000, 500)
             + baelish.currency.Amount(1, 6, 9)
             == baelish.currency.Amount(1, 1006, 509))
+    assert (baelish.currency.Amount(-5, 7, 0)
+            + baelish.currency.Amount(1, -7, 42)
+            == baelish.currency.Amount(-4, 0, 42))
